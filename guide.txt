@@ -1,0 +1,216 @@
+El Capitan on the GA-Z170X-UD3
+
+[B][SIZE=4]Changelog (May not be complete)[/SIZE][/B]
+[LIST]
+[*]Most things
+[*]Updated Clover Installer
+[*]Updated Clover Files
+[*]Removed Audio script (Changes already included in Clover Files)
+[*]Added HDMI Audio Script, as it depends on the Graphics Card used.
+[/LIST]
+
+[B][SIZE=4]My Configuration[/SIZE][/B]
+[LIST]
+[*]BIOS F5g (beta) [URL=http://download.gigabyte.asia/FileList/BIOS/mb_bios_ga-z170x-ud3_f5g.zip]Download[/URL]
+[*]Core i5-6600k @ 4.4GHz
+[*]1x 8 GB DDR4 2666 MHz RAM
+[*]Evga GTX 980 Ti SC+
+[*]Western Digital Blue 1TB
+[*]Apple Dual Channel Gigabit Ethernet PCI Express Card (MB977G/A)
+[*]OS X 10.11.3 El Capitan
+[/LIST]
+
+[B][SIZE=4]What works[/SIZE][/B]
+[LIST]
+[*]SATA
+[*]USB 2.0 and USB 3.0
+[*]Audio including HDMI/DP
+[*]CPU power management
+[*]GPU power management
+[*]Sleep
+[/LIST]
+
+[B][SIZE=4]What sorta works[/SIZE][/B]
+[LIST]
+[*]USB 3.1 Type A port works with a mouse. (Unable to mount any drives on that port.)
+[/LIST]
+
+[B][SIZE=4]Untested[/SIZE][/B]
+[LIST]
+[*]USB 3.1 Type C port
+[*]Intel HD530 integrated graphics
+[*]Build-in Ethernet (Untested by me but [URL=http://www.tonymacx86.com/network/180995-intel-i219-ethernet-drivers-skylake-100-series-motherboards-testing.html]tonymacx86 says it is working[/URL])
+[/LIST]
+
+[B][SIZE=4]Installation prerequisites[/SIZE][/B]
+[LIST]
+[*]A GA-Z170X-UD3 build
+[*]A working Mac or Hackintosh
+[*]A USB stick or drive, 16 GB or larger
+[/LIST]
+
+[B][SIZE=4]Get El Capitan[/SIZE][/B]
+[LIST=1]
+[*]Open Mac App Store
+[*]Log in with your Apple ID
+[*]Download OS X El Capitan (10.11.3 or higher required)
+[*]When the download finishes and the setup screen appears, [B]Quit[/B] the app from the menu bar. You should now see the application [B]/Applications/Install OS X El Capitan.app[/B]
+[/LIST]
+
+[B][SIZE=4]Things to download[/SIZE][/B]
+[LIST]
+[*][URL=https://github.com/cnrd/GA-Z170X-UD3-OSX/raw/master/Clover%20Files.zip]Clover Files[/URL]
+[*][URL=https://github.com/JrCs/CloverGrowerPro/blob/master/Files/HFSPlus/X64/HFSPlus.efi?raw=true]HFSPlus.efi[/URL]
+[*][URL=https://github.com/cnrd/GA-Z170X-UD3-OSX/raw/master/Clover_v2.3k_r3348.pkg.zip]Clover Installer[/URL]
+[*][URL=http://www.tonymacx86.com/attachments/network/166991d1449924474-intel-i219-ethernet-drivers-skylake-100-series-motherboards-testing-intelmausiethernet.kext.zip]Intel i219-V (ethernet) driver[/URL]
+[*][URL=https://github.com/toleda/audio_CloverHDMI/raw/master/audio_cloverHDMI-110.command.zip]audio_cloverHDMI-110.command[/URL]
+[*][URL=https://github.com/Piker-Alpha/ssdtPRGen.sh/archive/Beta.zip]ssdtPRGen (CPU PWM)[/URL]
+[*][URL=http://www.tonymacx86.com/attachments/audio/146742d1439315547-fix-no-sound-after-sleep-1150-possibly-other-realteks-codeccommander.kext.zip]CodecCommander.kext[/URL]
+[/LIST]
+
+[B][SIZE=4]BIOS Settings[/SIZE][/B]
+[LIST]
+[*]In [B]BIOS Features[/B]
+	[LIST]
+	[*][B]Fast Boot:[/B] Disabled
+	[*][B]Windows 8/10 Fatures:[/B] Windows 8/10
+	[*][B]CSM Support:[/B] Disabled
+	[*][B]Network Stack:[/B] Disabled
+	[/LIST]
+[*]In [B]Peripherals:[/B]
+	[LIST]
+	[*][B]Intel Platform Trust Technology:[/B] Disabled
+	[*][B]Initial Display Output:[/B] PCIe 1 Slot (Or whatever slot your GFX is in)
+	[*][B]Legacy USB Support:[/B] Enabled
+	[*][B]XHCI Hand-off:[/B] Enabled
+	[*][B]Port 60/64 Emulation:[/B] Disabled
+	[*]In [B]Super IO Configuration:[/B]
+		[LIST]
+		[*][B]Serial Port 1:[/B] Disabled
+		[/LIST]
+	[/LIST]
+[*]In [B]Chipset:[/B]
+	[LIST]
+	[*][B]VT-d:[/B] Disabled
+	[*][B]Internal Graphics:[/B] Disabled
+	[*][B]Audio Controller:[/B] Enabled
+	[*][B]PCH LAN Controller:[/B] Enabled (If using on-board LAN)
+	[*][B]IOAPIC 24-119 Entries:[/B] Disabled
+	[/LIST]
+[/LIST]
+
+[B][SIZE=4]Setup your RAM[/SIZE][/B]
+[LIST=1]
+[*]Open the config.plist
+[*]In SMBIOS
+	[LIST]
+	[*]In Modules
+		[LIST]
+		[*]Edit the current module (fields should explain what to add)
+		[*]You can copy what is between <dict> and </dict> (Including both) to add more modules
+		[/LIST]
+	[/LIST]
+[/LIST]
+
+[B][SIZE=4]Prepare Installer[/SIZE][/B]
+[LIST=1]
+[*]Insert USB Drive
+[*]Open [B]/Applications/Utilities/Disk Utility[/B]
+[*]Format drive as [B]Name:[/B] Untitled, [B]Format:[/B] OS X Extended (Journaled), [B]Sheme:[/B] GUID Partition Map
+[*]Open [B]/Applications/Utilities/Terminal[/B] and run this command (Your password will not be shown when typing)
+	[CODE]sudo "/Applications/Install OS X El Capitan.app/Contents/Resources/createinstallmedia" --volume /Volumes/Untitled --applicationpath "/Applications/Install OS X El Capitan.app" --nointeraction[/CODE]
+[*]Run Clover app from the downloaded ZIP
+[*]Choose [B]Change Install Location...[/B] and choose your USB
+[*]Choose Customize
+[*]Enable these flags
+	 [LIST]
+	 [*]Install for UEFI booting only
+	 [*]Drivers64UEFI
+	 	[LIST]
+		[*]OsxAptioFix2Drv-64
+		[*]EmuVariableUefi-64
+		[/LIST]
+	[/LIST]
+[*]Choose install
+[*]When finished open the EFI partiton -> CLOVER folder
+[*][B]Copy files from zip to these places[/B]
+	[LIST]
+	[*]config.plist
+	[*]ACPI/patched/SSDT-USB-GA-Z170X-UD3.aml
+	[*]kexts/Other/FakeSMC.kext
+	[*]kexts/Other/realtekALC.kext
+	[*]kexts/Other/USBInjectAll.kext
+    [*]kexts/Other/IntelMausiEthernet.kext
+	[*]drivers64UEFI/HFSPlus.efi
+	[/LIST]
+[*][B]Delete these files and folders[/B]
+	[LIST]
+	[*]kexts/10.*
+	[*]drivers64UEFI/VBoxHfs-64.efi
+	[/LIST]
+[/LIST]
+
+[B][SIZE=4]Install El Capitan[/SIZE][/B]
+[LIST=1]
+[*]Insert USB drive [B]Please use one of the black ports near the PS/2 port on the motherboard I/O[/B]
+[*]Hit [B]F12[/B] and choose [B]UEFI: [I]USB Drive Name[/I][/B]
+[*]When in Clover, please add the bootflag "nv_disable=1" (Whitout the quotes), then highlight [B]Boot Mac OS X from USB[/B], hit space and choose Boot verbose
+[*]When in the installer, choose your language.
+[*]Choose Disk Utility and format the drive you want to install OS X onto.
+[*]Close Disk Utility and choose Install OS X
+[*]Choose your harddive and hit install
+[*]Go take a cup of tea and wait for reboot (This may take up to 30 min)
+[*]When in Clover again, if there is no drive with the name you chose in the installer choose [B]Boot Mac OS X from USB[/B] again, else choose your drive name. (Remeber to add the "nv_disable=1" flag again)
+[*]If you chose [B]Boot Mac OS X from USB[/B] an installer should begin again, take another cup of tea now.
+[*]When your chosen drive name shows up in Clover highligt it, hit space and choose verbose boot.
+[*]You should now be at the OS X setup screen, choose your username and so on [B]Do not login to your Apple ID at this time[/B].
+[*]You should now be at the Desktop, go pet you cat/dog/child/wife/husband/rubberduck.
+[/LIST]
+
+[B][SIZE=4]Post-Installation Configuration[/SIZE][/B]
+[LIST=1]
+[*]Run Clover installer (Choose the same as before, but also choose Install RC scripts on target volume (To fix missing NVRam))
+[*]Copy the same files as for the installer
+[*][B]If you want a working HWMonitor (Some of the sensors will show wrong data currently) copy (from Sensors):[/B]
+	[LIST]
+	[*]ACPISensors.kext
+	[*]CPUSensors.kext
+	[*]GPUSensors.kext
+	[*]LPCSensors.kext
+	[/LIST]
+[*]To get working CPU PWM run the ssdtPRGen.sh script that was downloaded earlier (If your CPU is overclocked, add "-frequency xxxx" without the quotes. Ex: "-frequency 4400" for 4.4GHz)
+[*]To fix audio after sleep, install CodecCommander.kext with KextBeast (It will not work in the Clover folder!)
+[*]If you want to use iMessage, use the [URL=http://www.tonymacx86.com/general-help/110471-how-fix-imessage.html][B]How to Fix iMessage[/B][/URL] guide.
+[*]Reboot, you should now be able to boot into a working OS X
+[/LIST]
+
+[B][SIZE=4]Setup NVIDIA Graphics[/SIZE][/B]
+Do all of these steps before rebooting!
+If you use another Graphics Card, please search the forum for how to setup.
+[LIST=1]
+[*]If you use a 9xx series graphics card install the [URL=http://www.nvidia.com/download/driverResults.aspx/97587/]NVIDIA Web Drivers[/URL]
+[*]Do the [URL=http://www.tonymacx86.com/graphics/161256-solving-nvidia-driver-install-loading-problems.html]fix for [B]Problem 4[/B][/URL]
+[*]Open System Preferences -> NVIDIA Driver Manager -> Click the lock -> Click the NVIDIA Web Drivers modal.
+[*]Reboot 
+[/LIST]
+
+[B][SIZE=4]Setup USB[/SIZE][/B]
+[IMG]http://www.tonymacx86.com/attachments/desktop-compatibility/165104d1448990055t-testing-thread-skylake-platform-os-x-gigabyte-z170x-ud3-backplate.jpg[/IMG][IMG]http://www.tonymacx86.com/attachments/desktop-compatibility/165105d1448990055t-testing-thread-skylake-platform-os-x-gigabyte_z170x-ud3_board.jpg[/IMG]
+[URL=http://www.tonymacx86.com/desktop-compatibility/176407-testing-thread-skylake-platform-os-x-28.html#post1159924]You can find the full res pictures here[/URL] (Credit Scabattoir)
+
+You can enable and disable USB ports by looking at these pictures and change the [B]uia_exclude[/B] bootflag.
+Just remember to have 13 or less ports enabled (The USB 3.1 ports are not injected using this injector and therefor cannot be disabled.)
+
+[B][SIZE=4]Credits[/SIZE][/B]
+[LIST]
+[*][B]toleda:[/B] [URL=http://www.tonymacx86.com/audio/143757-audio-realtek-alc-applehda-guide.html]audio fix[/URL] & [URL=http://www.tonymacx86.com/hdmi-audio/143760-audio-hdmi-audio-applehda-guide.html]HDMI/DP fix[/URL]
+[*][B]RehabMan:[/B] [URL=https://github.com/RehabMan/OS-X-USB-Inject-All]USB fix[/URL]
+[*][B]Scabattoir:[/B] [URL=http://www.tonymacx86.com/desktop-compatibility/176407-testing-thread-skylake-platform-os-x-28.html#post1159924]USB layout[/URL]
+[*][B]ammulder:[/B] Guide layout and answering questions
+[*][B]Pike R. Alpha:[/B] [URL=https://pikeralpha.wordpress.com/2015/11/06/appleapic-kext-binary-patch-for-skylake/]Skylake patch[/URL] & [URL=https://github.com/Piker-Alpha/ssdtPRGen.sh]ssdtPRGen.sh[/URL]
+[*][B]tonymacx86:[/B] [URL=http://www.tonymacx86.com/network/180995-intel-i219-ethernet-drivers-skylake-100-series-motherboards-testing.html]Intel i219-V kext (ethernet fix)[/URL]
+[*][B]tigersoul925:[/B] [URL=http://www.tonymacx86.com/audio/170063-fix-no-sound-after-sleep-1150-possibly-other-realteks.html]Audio after sleep fix[/URL]
+[*][B]slim.jim:[/B] [URL=http://www.tonymacx86.com/graphics/161256-solving-nvidia-driver-install-loading-problems.html]GPU Black screen Fix[/URL]
+[*][B]Everyone:[/B] in the [URL=http://www.tonymacx86.com/desktop-compatibility/176407-testing-thread-skylake-platform-os-x.html]Testing Thread: Skylake Platform in OS X[/URL]
+[*][B]Anyone not listed here who have helped me[/B]
+[/LIST]
