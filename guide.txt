@@ -8,16 +8,17 @@ El Capitan on the GA-Z170X-UD3
 [*]Removed Audio script (Changes already included in Clover Files) [B]DATE:[/B] 13/02/16
 [*]Added HDMI Audio Script, as it depends on the Graphics Card used. [B]DATE:[/B] 13/02/16
 [*]Updated Ethernet [B]DATE:[/B] 13/02/16
+[*]Updated guide for 10.11.4 [B]DATE:[/B] 28/03/16
 [/LIST]
 
 [B][SIZE=4]My Configuration[/SIZE][/B]
 [LIST]
-[*]BIOS F5g (beta) [URL=http://download.gigabyte.asia/FileList/BIOS/mb_bios_ga-z170x-ud3_f5g.zip]Download[/URL]
+[*]BIOS F6 [URL=http://download.gigabyte.asia/FileList/BIOS/mb_bios_ga-z170x-ud3_f6.zip]Download[/URL]
 [*]Core i5-6600k @ 4.4GHz
-[*]1x 8 GB DDR4 2666 MHz RAM
+[*]2x 8 GB DDR4 2666 MHz RAM (16GB)
 [*]Evga GTX 980 Ti SC+
 [*]Western Digital Blue 1TB
-[*]OS X 10.11.3 El Capitan
+[*]OS X 10.11.4 El Capitan
 [/LIST]
 
 [B][SIZE=4]What works[/SIZE][/B]
@@ -53,7 +54,7 @@ El Capitan on the GA-Z170X-UD3
 [LIST=1]
 [*]Open Mac App Store
 [*]Log in with your Apple ID
-[*]Download OS X El Capitan (10.11.3 or higher required)
+[*]Download OS X El Capitan (10.11.4 or higher required)
 [*]When the download finishes and the setup screen appears, [B]Quit[/B] the app from the menu bar. You should now see the application [B]/Applications/Install OS X El Capitan.app[/B]
 [/LIST]
 
@@ -62,6 +63,7 @@ El Capitan on the GA-Z170X-UD3
 [*][URL=https://github.com/cnrd/GA-Z170X-UD3-OSX/raw/master/Clover%20Files.zip]Clover Files[/URL]
 [*][URL=https://github.com/JrCs/CloverGrowerPro/blob/master/Files/HFSPlus/X64/HFSPlus.efi?raw=true]HFSPlus.efi[/URL]
 [*][URL=https://github.com/cnrd/GA-Z170X-UD3-OSX/raw/master/Clover_v2.3k_r3348.pkg.zip]Clover Installer[/URL]
+[*][URL=https://github.com/toleda/audio_CloverALC/raw/master/audio_cloverALC-110.command.zip]audio_cloverALC-110.command.zip[/URL]
 [*][URL=https://github.com/toleda/audio_CloverHDMI/raw/master/audio_cloverHDMI-110.command.zip]audio_cloverHDMI-110.command[/URL]
 [*][URL=https://github.com/Piker-Alpha/ssdtPRGen.sh/archive/Beta.zip]ssdtPRGen (CPU PWM)[/URL]
 [*][URL=http://www.tonymacx86.com/attachments/audio/146742d1439315547-fix-no-sound-after-sleep-1150-possibly-other-realteks-codeccommander.kext.zip]CodecCommander.kext[/URL]
@@ -94,7 +96,7 @@ El Capitan on the GA-Z170X-UD3
 	[*][B]Internal Graphics:[/B] Disabled
 	[*][B]Audio Controller:[/B] Enabled
 	[*][B]PCH LAN Controller:[/B] Enabled
-	[*][B]IOAPIC 24-119 Entries:[/B] Disabled
+	[*][B]IOAPIC 24-119 Entries:[/B] Enabled
 	[/LIST]
 [/LIST]
 
@@ -137,7 +139,6 @@ El Capitan on the GA-Z170X-UD3
 	[*]config.plist
 	[*]ACPI/patched/SSDT-USB-GA-Z170X-UD3.aml
 	[*]kexts/Other/FakeSMC.kext
-	[*]kexts/Other/realtekALC.kext
 	[*]kexts/Other/USBInjectAll.kext
     [*]kexts/Other/IntelMausiEthernet.kext
 	[*]drivers64UEFI/HFSPlus.efi
@@ -178,6 +179,7 @@ El Capitan on the GA-Z170X-UD3
 	[*]LPCSensors.kext
 	[/LIST]
 [*]To get working CPU PWM run the ssdtPRGen.sh script that was downloaded earlier (If your CPU is overclocked, add "-frequency xxxx" without the quotes. Ex: "-frequency 4400" for 4.4GHz)
+[*]To get working audio and HDMI audio first run audio_cloverALC-110.command then audio_cloverHDMI-110.command
 [*]To fix audio after sleep, install CodecCommander.kext with KextBeast (It will not work in the Clover folder!)
 [*]If you want to use iMessage, use the [URL=http://www.tonymacx86.com/general-help/110471-how-fix-imessage.html][B]How to Fix iMessage[/B][/URL] guide.
 [*]Reboot, you should now be able to boot into a working OS X
