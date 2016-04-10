@@ -14,20 +14,6 @@
 			<array>
 				<dict>
 					<key>Comment</key>
-					<string>change _OSI to XOSI</string>
-					<key>Disabled</key>
-					<false/>
-					<key>Find</key>
-					<data>
-					X09TSQ==
-					</data>
-					<key>Replace</key>
-					<data>
-					WE9TSQ==
-					</data>
-				</dict>
-				<dict>
-					<key>Comment</key>
 					<string>Rename HDAS to HDEF</string>
 					<key>Disabled</key>
 					<false/>
@@ -38,6 +24,20 @@
 					<key>Replace</key>
 					<data>
 					SERFRg==
+					</data>
+				</dict>
+				<dict>
+					<key>Comment</key>
+					<string>change _OSI to XOSI</string>
+					<key>Disabled</key>
+					<false/>
+					<key>Find</key>
+					<data>
+					X09TSQ==
+					</data>
+					<key>Replace</key>
+					<data>
+					WE9TSQ==
 					</data>
 				</dict>
 			</array>
@@ -71,6 +71,8 @@
 	<dict>
 		<key>QPI</key>
 		<integer>100</integer>
+		<key>UseARTFrequency</key>
+		<false/>
 	</dict>
 	<key>Devices</key>
 	<dict>
@@ -130,8 +132,6 @@
 			<key>Tool</key>
 			<true/>
 		</dict>
-		<key>Theme</key>
-		<string>os_one</string>
 	</dict>
 	<key>Graphics</key>
 	<dict>
@@ -254,7 +254,7 @@
 	<key>SystemParameters</key>
 	<dict>
 		<key>InjectKexts</key>
-		<string>YES</string>
+		<string>Yes</string>
 		<key>InjectSystemID</key>
 		<true/>
 	</dict>
