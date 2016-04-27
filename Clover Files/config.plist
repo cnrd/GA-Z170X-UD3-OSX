@@ -65,7 +65,7 @@
 		<key>Timeout</key>
 		<integer>5</integer>
 		<key>XMPDetection</key>
-		<false/>
+		<true/>
 	</dict>
 	<key>CPU</key>
 	<dict>
@@ -218,30 +218,6 @@
 		<string>Part Component</string>
 		<key>Manufacturer</key>
 		<string>Apple Inc.</string>
-		<key>Memory</key>
-		<dict>
-			<key>Modules</key>
-			<array>
-				<dict>
-					<key>Frequency</key>
-					<integer>2666</integer>
-					<key>Part</key>
-					<string>xxxx</string>
-					<key>Serial</key>
-					<string>xxxx</string>
-					<key>Size</key>
-					<integer>8192</integer>
-					<key>Slot</key>
-					<integer>1</integer>
-					<key>Type</key>
-					<string>DDR4</string>
-					<key>Vendor</key>
-					<string>Kingston</string>
-				</dict>
-			</array>
-			<key>SlotCount</key>
-			<integer>4</integer>
-		</dict>
 		<key>ProductName</key>
 		<string>iMac17,1</string>
 		<key>SerialNumber</key>
