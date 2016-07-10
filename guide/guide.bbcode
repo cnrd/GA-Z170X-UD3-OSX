@@ -14,6 +14,7 @@ El Capitan on the GA-Z170X-UD3
 [*]Added <key>UseARTFrequency</key> <false/> (Fixes audio distortion in Clover rev. 3354 <) [B]DATE:[/B] 10/04/16
 [*]Fixed error in creation of SSDT for OC CPU [B]DATE:[/B] 10/04/16
 [*]Automatic RAM detection! (Require newest Clover version) [B]DATE:[/B] 27/04/16
+[*]Updated CodecCommander.kext link (Now also support back/front switching after sleep)
 [/LIST]
 
 [B][SIZE=4]My Configuration[/SIZE][/B]
@@ -72,7 +73,7 @@ El Capitan on the GA-Z170X-UD3
 [*][URL=https://github.com/toleda/audio_CloverALC/raw/master/audio_cloverALC-110.command.zip]audio_cloverALC-110.command[/URL]
 [*][URL=https://github.com/toleda/audio_CloverHDMI/raw/master/audio_cloverHDMI-110.command.zip]audio_cloverHDMI-110.command[/URL]
 [*][URL=https://github.com/Piker-Alpha/ssdtPRGen.sh/archive/Beta.zip]ssdtPRGen (CPU PWM)[/URL]
-[*][URL=http://www.tonymacx86.com/attachments/audio/146742d1439315547-fix-no-sound-after-sleep-1150-possibly-other-realteks-codeccommander.kext.zip]CodecCommander.kext[/URL]
+[*][URL=hhttps://github.com/cnrd/GA-Z170X-UD3-OSX/raw/master/CodecCommander.kext.rev.2.5.2.zip]CodecCommander.kext[/URL]
 [/LIST]
 
 [B][SIZE=4]BIOS Settings[/SIZE][/B]
@@ -190,21 +191,21 @@ If you use another Graphics Card, please search the forum for how to setup.
 [/LIST]
 
 [B][SIZE=4]Setup USB[/SIZE][/B]
-[IMG]http://www.tonymacx86.com/attachments/desktop-compatibility/165104d1448990055t-testing-thread-skylake-platform-os-x-gigabyte-z170x-ud3-backplate.jpg[/IMG][IMG]http://www.tonymacx86.com/attachments/desktop-compatibility/165105d1448990055t-testing-thread-skylake-platform-os-x-gigabyte_z170x-ud3_board.jpg[/IMG]
-[URL=http://www.tonymacx86.com/desktop-compatibility/176407-testing-thread-skylake-platform-os-x-28.html#post1159924]You can find the full res pictures here[/URL] (Credit Scabattoir)
+[B][SIZE=4]Setup USB[/SIZE][/B]
+[IMG=thumb]201318[/IMG] [IMG=thumb]201319[/IMG]
+(Credit Scabattoir)
 
 You can enable and disable USB ports by looking at these pictures and change the [B]uia_exclude[/B] bootflag.
-Just remember to have 13 or less ports enabled (The USB 3.1 ports are not injected using this injector and therefor cannot be disabled.)
+Just remember to have 15 or less ports enabled.
 
 [B][SIZE=4]Credits[/SIZE][/B]
 [LIST]
 [*][B]toleda:[/B] [URL=http://www.tonymacx86.com/audio/143757-audio-realtek-alc-applehda-guide.html]audio fix[/URL] & [URL=http://www.tonymacx86.com/hdmi-audio/143760-audio-hdmi-audio-applehda-guide.html]HDMI/DP fix[/URL]
-[*][B]RehabMan:[/B] [URL=https://github.com/RehabMan/OS-X-USB-Inject-All]USB fix[/URL]
+[*][B]RehabMan:[/B] [URL=https://github.com/RehabMan/OS-X-USB-Inject-All]USB fix[/URL] & [URL=https://github.com/RehabMan/EAPD-Codec-Commander]CodecCommander.kext[/URL]
 [*][B]Scabattoir:[/B] [URL=http://www.tonymacx86.com/desktop-compatibility/176407-testing-thread-skylake-platform-os-x-28.html#post1159924]USB layout[/URL]
 [*][B]ammulder:[/B] Guide layout and answering questions
 [*][B]Pike R. Alpha:[/B] [URL=https://pikeralpha.wordpress.com/2015/11/06/appleapic-kext-binary-patch-for-skylake/]Skylake patch[/URL] & [URL=https://github.com/Piker-Alpha/ssdtPRGen.sh]ssdtPRGen.sh[/URL]
 [*][B]tonymacx86:[/B] [URL=http://www.tonymacx86.com/network/180995-intel-i219-ethernet-drivers-skylake-100-series-motherboards-testing.html]Intel i219-V kext (ethernet fix)[/URL] & [URL=http://www.tonymacx86.com/graphics/188891-skylake-intel-hd-530-integrated-graphics-working-10-11-4-a.html]Intel 530 Graphics[/URL]
-[*][B]tigersoul925:[/B] [URL=http://www.tonymacx86.com/audio/170063-fix-no-sound-after-sleep-1150-possibly-other-realteks.html]Audio after sleep fix[/URL]
 [*][B]slim.jim:[/B] [URL=http://www.tonymacx86.com/graphics/161256-solving-nvidia-driver-install-loading-problems.html]GPU Black screen Fix[/URL]
 [*][B]Everyone:[/B] in the [URL=http://www.tonymacx86.com/desktop-compatibility/176407-testing-thread-skylake-platform-os-x.html]Testing Thread: Skylake Platform in OS X[/URL]
 [*][B]Anyone not listed here who have helped me[/B]
