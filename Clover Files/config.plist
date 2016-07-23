@@ -10,37 +10,6 @@
 			<false/>
 			<key>DropOEM_DSM</key>
 			<false/>
-			<key>Patches</key>
-			<array>
-				<dict>
-					<key>Comment</key>
-					<string>Rename HDAS to HDEF</string>
-					<key>Disabled</key>
-					<false/>
-					<key>Find</key>
-					<data>
-					SERBUw==
-					</data>
-					<key>Replace</key>
-					<data>
-					SERFRg==
-					</data>
-				</dict>
-				<dict>
-					<key>Comment</key>
-					<string>change _OSI to XOSI</string>
-					<key>Disabled</key>
-					<false/>
-					<key>Find</key>
-					<data>
-					X09TSQ==
-					</data>
-					<key>Replace</key>
-					<data>
-					WE9TSQ==
-					</data>
-				</dict>
-			</array>
 			<key>ReuseFFFF</key>
 			<false/>
 		</dict>
@@ -51,11 +20,20 @@
 			<key>Generate</key>
 			<false/>
 		</dict>
+		<key>DropTables</key>
+		<array>
+			<dict>
+    			<key>Signature</key>
+    			<string>SSDT</string>
+    			<key>TableId</key>
+    			<string>xh_rvp10</string>
+  			</dict>
+  		</array>
 	</dict>
 	<key>Boot</key>
 	<dict>
 		<key>Arguments</key>
-		<string>darkwake=0 uia_exclude=HS01;HS02;HS07;HS08;HS11;HS12;SS01;SS02;SS09</string>
+		<string>dart=0 darkwake=0</string>
 		<key>Debug</key>
 		<false/>
 		<key>DefaultVolume</key>
@@ -65,7 +43,7 @@
 		<key>Timeout</key>
 		<integer>5</integer>
 		<key>XMPDetection</key>
-		<true/>
+		<string>Yes</string>
 	</dict>
 	<key>CPU</key>
 	<dict>
@@ -129,6 +107,8 @@
 			<true/>
 			<key>Legacy</key>
 			<false/>
+			<key>Linux</key>
+			<false/>
 			<key>Tool</key>
 			<true/>
 		</dict>
@@ -183,45 +163,49 @@
 			</dict>
 		</array>
 	</dict>
-		<key>RtVariables</key>
+	<key>RtVariables</key>
 	<dict>
 		<key>BooterConfig</key>
 		<string>0x28</string>
 		<key>CsrActiveConfig</key>
-		<string>0x03</string>
+		<string>0x0</string>
+		<key>MLB</key>
+		<string>XXXXXXXXXXXXX</string>
+		<key>ROM</key>
+		<string>000000000000</string>
 	</dict>
 	<key>SMBIOS</key>
 	<dict>
 		<key>BiosReleaseDate</key>
-		<string>09/22/2015</string>
+		<string>06/12/13</string>
 		<key>BiosVendor</key>
 		<string>Apple Inc.</string>
 		<key>BiosVersion</key>
-		<string>IM171.88Z.0105.B00.1509221819</string>
+		<string>MP61.88Z.0116.B04.1312061508</string>
 		<key>Board-ID</key>
-		<string>Mac-65CE76090165799A</string>
+		<string>Mac-F60DEB81FF30ACF6</string>
 		<key>BoardManufacturer</key>
 		<string>Apple Inc.</string>
+		<key>BoardSerialNumber</key>
+		<string>XXXXXXXXXXXXX</string>
 		<key>BoardType</key>
-		<integer>10</integer>
-		<key>BoardVersion</key>
-		<string>iMac17,1</string>
+		<integer>11</integer>
 		<key>ChassisAssetTag</key>
-		<string></string>
+		<string>Pro-Enclosure</string>
 		<key>ChassisManufacturer</key>
 		<string>Apple Inc.</string>
 		<key>ChassisType</key>
-		<string>13</string>
+		<string>06</string>
 		<key>Family</key>
-		<string>iMac</string>
-		<key>LocationInChassis</key>
-		<string>Part Component</string>
+		<string>Mac Pro</string>
 		<key>Manufacturer</key>
 		<string>Apple Inc.</string>
 		<key>ProductName</key>
-		<string>iMac17,1</string>
+		<string>MacPro6,1</string>
 		<key>SerialNumber</key>
-		<string>C02Q0000GG7L</string>
+		<string>SSSSSSSSSSSS</string>
+		<key>SmUUID</key>
+		<string>UUUUUUUU-UUUU-UUUU-UUUU-UUUUUUUUUUUU</string>
 		<key>Trust</key>
 		<false/>
 		<key>Version</key>
