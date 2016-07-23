@@ -15,6 +15,10 @@ El Capitan on the GA-Z170X-UD3
 [*]Fixed error in creation of SSDT for OC CPU [B]DATE:[/B] 10/04/16
 [*]Automatic RAM detection! (Require newest Clover version) [B]DATE:[/B] 27/04/16
 [*]Updated CodecCommander.kext link (Now also support back/front switching after sleep)
+[*][B]IMPORTANT:[/B] Switched to MacPro6,1 instead of iMac17,1 (Fixes some problems with Nvidia GPUs). Requires new serial, MLB, and SmUUID (Or reverting the changes of SMBIOS section) for iMessage. [B]DATE:[/B] 23/07/16
+[*] New native USB method. [B]DATE:[/B] 23/07/16
+[*] New audio method, survive reinstall/update, working audio after sleep, working front/back switching (Require unmodified AppleHDA.kext). [B]DATE:[/B] 23/07/16
+[*] Other small changes [B]DATE:[/B] 23/07/16
 [/LIST]
 
 [B][SIZE=4]My Configuration[/SIZE][/B]
@@ -45,7 +49,7 @@ El Capitan on the GA-Z170X-UD3
 [*]USB 3.1 Type A port works with a mouse. (Unable to mount any drives on that port.)
 [/LIST]
 
-[B][SIZE=4]What does not work[/SIZE][/B]
+[B][SIZE=4]Untested[/SIZE][/B]
 [LIST]
 [*]USB 3.1 Type C port
 [/LIST]
@@ -67,13 +71,12 @@ El Capitan on the GA-Z170X-UD3
 
 [B][SIZE=4]Things to download[/SIZE][/B]
 [LIST]
-[*][URL=https://github.com/cnrd/GA-Z170X-UD3-OSX/raw/master/Clover%20Files.zip]Clover Files[/URL]
+[*][URL=https://github.com/cnrd/GA-Z170X-UD3-OSX/blob/master/zips/Clover%20Files.zip]Clover Files.zip[/URL]
 [*][URL=https://github.com/JrCs/CloverGrowerPro/blob/master/Files/HFSPlus/X64/HFSPlus.efi?raw=true]HFSPlus.efi[/URL]
-[*][URL=https://github.com/cnrd/GA-Z170X-UD3-OSX/raw/master/Clover_v2.3k_r3489.pkg.zip]Clover Installer[/URL]
-[*][URL=https://github.com/toleda/audio_CloverALC/raw/master/audio_cloverALC-110.command.zip]audio_cloverALC-110.command[/URL]
+[*][URL=https://github.com/cnrd/GA-Z170X-UD3-OSX/blob/master/zips/Clover_v2.3k_r3561.pkg.zip]Clover Installer[/URL]
 [*][URL=https://github.com/toleda/audio_CloverHDMI/raw/master/audio_cloverHDMI-110.command.zip]audio_cloverHDMI-110.command[/URL]
 [*][URL=https://github.com/Piker-Alpha/ssdtPRGen.sh/archive/Beta.zip]ssdtPRGen (CPU PWM)[/URL]
-[*][URL=hhttps://github.com/cnrd/GA-Z170X-UD3-OSX/raw/master/CodecCommander.kext.rev.2.5.2.zip]CodecCommander.kext[/URL]
+[*][URL=https://github.com/cnrd/GA-Z170X-UD3-OSX/blob/master/zips/USB-SSDT.zip]USB-SSDT.zip[/URL]
 [/LIST]
 
 [B][SIZE=4]BIOS Settings[/SIZE][/B]
@@ -127,15 +130,23 @@ El Capitan on the GA-Z170X-UD3
 		[/LIST]
 	[/LIST]
 [*]Choose install
+[*]Generate USB configuration: [B]Go to section Setup USB[/B] then return.
 [*]When finished open the EFI partiton -> CLOVER folder
-[*][B]Copy files from zip to these places[/B]
+[*][B]Copy files from USB-SSDT folder to these places[/B]
+	[LIST]
+	[*]ACPI/patched/SSDT-5.aml
+	[*]ACPI/patched/USB-SSDT.aml
+	[/LIST]
+[*][B]Copy files from Clover Files to these places[/B]
 	[LIST]
 	[*]config.plist
-	[*]ACPI/patched/SSDT-USB-GA-Z170X-UD3.aml
 	[*]kexts/Other/FakeSMC.kext
-	[*]kexts/Other/USBInjectAll.kext
     [*]kexts/Other/IntelMausiEthernet.kext
+    [*]kexts/Other/AppleALC.kext
+    [*]kexts/Other/CodecCommander.kext
 	[*]drivers64UEFI/HFSPlus.efi
+	[*]ACPI/patched/XOSI-WIN10.aml
+	[*]ACPI/patched/SSDT-HDEF-HDAS-1.aml
 	[/LIST]
 [*][B]Delete these files and folders[/B]
 	[LIST]
@@ -173,9 +184,8 @@ El Capitan on the GA-Z170X-UD3
 	[*]LPCSensors.kext
 	[/LIST]
 [*]To get working CPU PWM run the ssdtPRGen.sh script that was downloaded earlier (If your CPU is overclocked, add "-turbo xxxx" without the quotes. Ex: "-turbo 4400" for 4.4GHz)
-[*]To get working audio and HDMI audio first run audio_cloverALC-110.command then audio_cloverHDMI-110.command
-[*]To fix audio after sleep, install CodecCommander.kext with KextBeast (It will not work in the Clover folder!)
-[*]If you want to use iMessage, use the [URL=http://www.tonymacx86.com/general-help/110471-how-fix-imessage.html][B]How to Fix iMessage[/B][/URL] guide.
+[*]To get HDMI audio run audio_cloverHDMI-110.command [B]Do not do this if you use an Nvidia GPU![/B]
+[*]If you want to use iMessage, use [URL=http://www.tonymacx86.com/threads/an-idiots-guide-to-imessage.196827/][B]An iDiot's Guide To iMessage[/B][/URL]. (Not my idea for the name, that is what it's called).
 [*]Make sure that this variable is NOT removed in config.plist: <key>UseARTFrequency</key> <false/>, it should be present under CPU, but Clover Configurator remove the variable.
 [*]Reboot, you should now be able to boot into a working OS X
 [/LIST]
@@ -185,8 +195,7 @@ Do all of these steps before rebooting!
 If you use another Graphics Card, please search the forum for how to setup.
 [LIST=1]
 [*]If you use a 9xx series graphics card install the [URL=http://www.nvidia.com/download/driverResults.aspx/100824/en-us]NVIDIA Web Drivers[/URL]
-[*]Do the [URL=http://www.tonymacx86.com/graphics/161256-solving-nvidia-driver-install-loading-problems.html]fix for [B]Problem 4[/B][/URL]
-[*]Open System Preferences -> NVIDIA Driver Manager -> Click the lock -> Click the NVIDIA Web Drivers modal.
+[*]From Clover Files copy: ACPI/patched/SSDT-HDMI-NVIDIA-PEG0.aml to the same place in your Clover folder.
 [*]Reboot 
 [/LIST]
 
@@ -194,8 +203,16 @@ If you use another Graphics Card, please search the forum for how to setup.
 [ATTACH=thumb]202750[/ATTACH] [ATTACH=thumb]202751[/ATTACH]
 (Credit Scabattoir)
 
-You can enable and disable USB ports by looking at these pictures and change the [B]uia_exclude[/B] bootflag.
-Just remember to have 15 or less ports enabled.
+[LIST=1]
+[*]Unpack USB-SSDT.zip
+[*]Run USB-SSDT.py
+[*]Use the pictures above to find the ports you need to enable.
+[/LIST]
+
+HSxx (eg. HS01) is USB 2.0
+SSxx (eg. SS01) is USB 3.0
+
+You will need to enable both HS and SS if you want USB 2.0 and USB 3.0 on the same port.
 
 [B][SIZE=4]Credits[/SIZE][/B]
 [LIST]
@@ -203,7 +220,7 @@ Just remember to have 15 or less ports enabled.
 [*][B]RehabMan:[/B] [URL=https://github.com/RehabMan/OS-X-USB-Inject-All]USB fix[/URL] & [URL=https://github.com/RehabMan/EAPD-Codec-Commander]CodecCommander.kext[/URL]
 [*][B]Scabattoir:[/B] [URL=http://www.tonymacx86.com/desktop-compatibility/176407-testing-thread-skylake-platform-os-x-28.html#post1159924]USB layout[/URL]
 [*][B]ammulder:[/B] Guide layout and answering questions
-[*][B]Pike R. Alpha:[/B] [URL=https://pikeralpha.wordpress.com/2015/11/06/appleapic-kext-binary-patch-for-skylake/]Skylake patch[/URL] & [URL=https://github.com/Piker-Alpha/ssdtPRGen.sh]ssdtPRGen.sh[/URL]
+[*][B]Pike R. Alpha:[/B] [URL=https://pikeralpha.wordpress.com/2015/11/06/appleapic-kext-binary-patch-for-skylake/]Skylake patch[/URL] & [URL=https://github.com/Piker-Alpha/ssdtPRGen.sh]ssdtPRGen.sh[/URL] & [URL=https://pikeralpha.wordpress.com/2016/07/13/simple-skylake-usb-fix-no-kexts-required/]USB SSDT idea.[/URL]
 [*][B]tonymacx86:[/B] [URL=http://www.tonymacx86.com/network/180995-intel-i219-ethernet-drivers-skylake-100-series-motherboards-testing.html]Intel i219-V kext (ethernet fix)[/URL] & [URL=http://www.tonymacx86.com/graphics/188891-skylake-intel-hd-530-integrated-graphics-working-10-11-4-a.html]Intel 530 Graphics[/URL]
 [*][B]slim.jim:[/B] [URL=http://www.tonymacx86.com/graphics/161256-solving-nvidia-driver-install-loading-problems.html]GPU Black screen Fix[/URL]
 [*][B]Everyone:[/B] in the [URL=http://www.tonymacx86.com/desktop-compatibility/176407-testing-thread-skylake-platform-os-x.html]Testing Thread: Skylake Platform in OS X[/URL]
