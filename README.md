@@ -1,5 +1,5 @@
 # GA-Z170X-UD3 based hackintosh #
-This repo contains all the files required for a hackintosh vased on the Gigabyte GA-Z170X-UD3 motherboard.
+This repo contains all the files required for a hackintosh based on the Gigabyte GA-Z170X-UD3 motherboard.
 
 I use the following hardware on my system:
 * GA-Z170X-UD3
