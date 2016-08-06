@@ -16,9 +16,13 @@ El Capitan on the GA-Z170X-UD3
 [*]Automatic RAM detection! (Require newest Clover version) [B]DATE:[/B] 27/04/16
 [*]Updated CodecCommander.kext link (Now also support back/front switching after sleep)
 [*][B]IMPORTANT:[/B] Switched to MacPro6,1 instead of iMac17,1 (Fixes some problems with Nvidia GPUs). Requires new serial, MLB, and SmUUID (Or reverting the changes of SMBIOS section) for iMessage. [B]DATE:[/B] 23/07/16
-[*] New native USB method. [B]DATE:[/B] 23/07/16
-[*] New audio method, survive reinstall/update, working audio after sleep, working front/back switching (Require unmodified AppleHDA.kext). [B]DATE:[/B] 23/07/16
-[*] Other small changes [B]DATE:[/B] 23/07/16
+[*]New native USB method. [B]DATE:[/B] 23/07/16
+[*]New audio method, survive reinstall/update, working audio after sleep, working front/back switching (Require unmodified AppleHDA.kext). [B]DATE:[/B] 23/07/16
+[*]Other small changes [B]DATE:[/B] 23/07/16
+[*]Updated Clover to rev. 3662
+[*]Edited CsrActiveConfig (0x67)
+[*]Edited the following SMBIOS entries to contain allowed values: MLB, BoardSerialNumber, SerialNumber, SmUUID.
+[*][URL=http://www.tonymacx86.com/threads/guide-el-capitan-on-the-ga-z170x-ud3.180618/page-21#post-1300848]Added FixShutdown_0004 DSDT patch, to avoid auto bootup after sleep.[/URL] (Credit: @edoardoconti97)
 [/LIST]
 
 [B][SIZE=4]My Configuration[/SIZE][/B]
@@ -73,7 +77,7 @@ El Capitan on the GA-Z170X-UD3
 [LIST]
 [*][URL=https://github.com/cnrd/GA-Z170X-UD3-OSX/raw/master/zips/Clover%20Files.zip]Clover Files.zip[/URL]
 [*][URL=https://github.com/JrCs/CloverGrowerPro/blob/master/Files/HFSPlus/X64/HFSPlus.efi?raw=true]HFSPlus.efi[/URL]
-[*][URL=https://github.com/cnrd/GA-Z170X-UD3-OSX/raw/master/zips/Clover_v2.3k_r3561.pkg.zip]Clover Installer[/URL]
+[*][URL=https://github.com/cnrd/GA-Z170X-UD3-OSX/raw/master/zips/Clover.zip]Clover Installer[/URL]
 [*][URL=https://github.com/toleda/audio_CloverHDMI/raw/master/audio_cloverHDMI-110.command.zip]audio_cloverHDMI-110.command[/URL]
 [*][URL=https://github.com/Piker-Alpha/ssdtPRGen.sh/archive/Beta.zip]ssdtPRGen (CPU PWM)[/URL]
 [*][URL=https://github.com/cnrd/GA-Z170X-UD3-OSX/raw/master/zips/USB-SSDT.zip]USB-SSDT.zip[/URL]
@@ -216,13 +220,15 @@ You will need to enable both HS and SS if you want USB 2.0 and USB 3.0 on the sa
 
 [B][SIZE=4]Credits[/SIZE][/B]
 [LIST]
-[*][B]toleda:[/B] [URL=http://www.tonymacx86.com/audio/143757-audio-realtek-alc-applehda-guide.html]audio fix[/URL] & [URL=http://www.tonymacx86.com/hdmi-audio/143760-audio-hdmi-audio-applehda-guide.html]HDMI/DP fix[/URL]
+[*][B]toleda:[/B] [URL=http://www.tonymacx86.com/hdmi-audio/143760-audio-hdmi-audio-applehda-guide.html]HDMI/DP fix[/URL]
 [*][B]RehabMan:[/B] [URL=https://github.com/RehabMan/OS-X-USB-Inject-All]USB fix[/URL] & [URL=https://github.com/RehabMan/EAPD-Codec-Commander]CodecCommander.kext[/URL]
 [*][B]Scabattoir:[/B] [URL=http://www.tonymacx86.com/desktop-compatibility/176407-testing-thread-skylake-platform-os-x-28.html#post1159924]USB layout[/URL]
 [*][B]ammulder:[/B] Guide layout and answering questions
 [*][B]Pike R. Alpha:[/B] [URL=https://pikeralpha.wordpress.com/2015/11/06/appleapic-kext-binary-patch-for-skylake/]Skylake patch[/URL] & [URL=https://github.com/Piker-Alpha/ssdtPRGen.sh]ssdtPRGen.sh[/URL] & [URL=https://pikeralpha.wordpress.com/2016/07/13/simple-skylake-usb-fix-no-kexts-required/]USB SSDT idea.[/URL]
 [*][B]tonymacx86:[/B] [URL=http://www.tonymacx86.com/network/180995-intel-i219-ethernet-drivers-skylake-100-series-motherboards-testing.html]Intel i219-V kext (ethernet fix)[/URL] & [URL=http://www.tonymacx86.com/graphics/188891-skylake-intel-hd-530-integrated-graphics-working-10-11-4-a.html]Intel 530 Graphics[/URL]
 [*][B]slim.jim:[/B] [URL=http://www.tonymacx86.com/graphics/161256-solving-nvidia-driver-install-loading-problems.html]GPU Black screen Fix[/URL]
+[*][B]vit9696:[/B] [URL=https://github.com/vit9696/AppleALC]AppleALC.kext[/URL]
+[*][B]edoardoconti97:[/B] [URL=http://www.tonymacx86.com/threads/guide-el-capitan-on-the-ga-z170x-ud3.180618/page-21#post-1300848]DSDT fix for not turning on when inserting/removing USB device after shutdown.[/URL]
 [*][B]Everyone:[/B] in the [URL=http://www.tonymacx86.com/desktop-compatibility/176407-testing-thread-skylake-platform-os-x.html]Testing Thread: Skylake Platform in OS X[/URL]
 [*][B]Anyone not listed here who have helped me[/B]
 [/LIST]
