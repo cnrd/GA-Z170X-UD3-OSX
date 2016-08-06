@@ -23,6 +23,11 @@
 				<data>WE9TSQ==</data>
 				</dict>
 			</array>
+			<key>Fixes</key>
+			<dict>
+				<key>FixShutdown_0004</key>
+				<true/>
+			</dict>
 		</dict>
 		<key>SSDT</key>
 		<dict>
@@ -179,9 +184,9 @@
 		<key>BooterConfig</key>
 		<string>0x28</string>
 		<key>CsrActiveConfig</key>
-		<string>0x0</string>
+		<string>0x67</string>
 		<key>MLB</key>
-		<string>XXXXXXXXXXXXX</string>
+		<string>MLBFIXME12345</string>
 		<key>ROM</key>
 		<string>000000000000</string>
 	</dict>
@@ -198,7 +203,7 @@
 		<key>BoardManufacturer</key>
 		<string>Apple Inc.</string>
 		<key>BoardSerialNumber</key>
-		<string>XXXXXXXXXXXXX</string>
+		<string>MLBFIXME12345</string>
 		<key>BoardType</key>
 		<integer>11</integer>
 		<key>ChassisAssetTag</key>
@@ -214,9 +219,9 @@
 		<key>ProductName</key>
 		<string>MacPro6,1</string>
 		<key>SerialNumber</key>
-		<string>SSSSSSSSSSSS</string>
+		<string>C02LR3DWF693</string>
 		<key>SmUUID</key>
-		<string>UUUUUUUU-UUUU-UUUU-UUUU-UUUUUUUUUUUU</string>
+		<string>10000000-2000-3000-4000-500000000000</string>
 		<key>Trust</key>
 		<false/>
 		<key>Version</key>
