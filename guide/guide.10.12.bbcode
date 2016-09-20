@@ -1,38 +1,21 @@
-El Capitan on the GA-Z170X-UD3
+macOS Sierra on the GA-Z170X-UD3
 
 [B][SIZE=4]Changelog (May not be complete)[/SIZE][/B]
 [LIST]
-[*][B]Removed entries older than date below.[/B]
-[*]Updated guide for 10.11.4 [B]DATE:[/B] 28/03/16
-[*]Updated Nvidia driver link (Thanks [B]PhilipNorth[/B]) [B]DATE:[/B] 10/04/16
-[*]Updated CloverEFI (Required for my config.plist) [B]DATE:[/B] 10/04/16
-[*]Added <key>UseARTFrequency</key> <false/> (Fixes audio distortion in Clover rev. 3354 <) [B]DATE:[/B] 10/04/16
-[*]Fixed error in creation of SSDT for OC CPU [B]DATE:[/B] 10/04/16
-[*]Automatic RAM detection! (Require newest Clover version) [B]DATE:[/B] 27/04/16
-[*]Updated CodecCommander.kext link (Now also support back/front switching after sleep)
-[*][B]IMPORTANT:[/B] Switched to MacPro6,1 instead of iMac17,1 (Fixes some problems with Nvidia GPUs). Requires new serial, MLB, and SmUUID (Or reverting the changes of SMBIOS section) for iMessage. [B]DATE:[/B] 23/07/16
-[*]New native USB method. [B]DATE:[/B] 23/07/16
-[*]New audio method, survive reinstall/update, working audio after sleep, working front/back switching (Require unmodified AppleHDA.kext). [B]DATE:[/B] 23/07/16
-[*]Other small changes [B]DATE:[/B] 23/07/16
-[*]Updated Clover to rev. 3662 [B]DATE:[/B] 07/08/16
-[*]Edited CsrActiveConfig (0x67) [B]DATE:[/B] 07/08/16
-[*]Edited the following SMBIOS entries to contain allowed values: MLB, BoardSerialNumber, SerialNumber, SmUUID. [B]DATE:[/B] 07/08/16
-[*][URL=http://www.tonymacx86.com/threads/guide-el-capitan-on-the-ga-z170x-ud3.180618/page-21#post-1300848]Added FixShutdown_0004 DSDT patch, to avoid auto bootup after sleep.[/URL] (Credit: @edoardoconti97) [B]DATE:[/B] 07/08/16
-[*]Moved the USB section up, and changed some wording, as people were having problems with that section.[B]DATE:[/B] 24/08/16
-[*]Renamed USB-SSDT.py -> USB-SSDT.command (Double click to run) [B]DATE:[/B] 28/08/16
-[*]USB-SSDT.command now saves files on Desktop. [B]DATE:[/B] 28/08/16
+[*]Updated some of the guide for Sierra (Steps should be the same, but some names may be wrong, please report any inconsistencies you have found). [B]DATE:[/B] 20/09/16
+[*]Added upgrade path from El Capitan [B]DATE:[/B] 20/09/16
 [/LIST]
 
 [B][SIZE=4]My Configuration[/SIZE][/B]
 [LIST]
-[*]BIOS F6 [URL=http://download.gigabyte.asia/FileList/BIOS/mb_bios_ga-z170x-ud3_f6.zip]Download[/URL]
+[*]BIOS F7c [URL=http://www.mediafire.com/download/or389arm5v0dm8c/Z170XUD3.7c.zip]Download[/URL]
 [*]Core i5-6600k @ 4.4GHz
 [*]2x 8 GB DDR4 2666 MHz RAM (16GB)
 [*]Evga GTX 980 Ti SC+
 [*]Samsung EVO 850 500GB
 [*]Western Digital Blue 1TB
 [*][URL=http://www.tonymacx86.com/threads/continuity-and-handoff-capable-apple-mini-cards-pcie-and-mini-pcie-adapters.147734/]BCM94360CD Bluetooth/WiFi combo[/URL]
-[*]OS X 10.11.6 El Capitan
+[*]macOS 10.12.0
 [/LIST]
 
 [B][SIZE=4]What works[/SIZE][/B]
@@ -45,12 +28,13 @@ El Capitan on the GA-Z170X-UD3
 [*]Sleep
 [*]Build-in Ethernet (Including WOL)
 [*]TRIM support enabled
-[*]Intel HD530 integrated graphics (Untested by me, but Tony have a [URL=http://www.tonymacx86.com/graphics/188891-skylake-intel-hd-530-integrated-graphics-working-10-11-4-a.html]guide[/URL])
+[*]Intel HD530 integrated graphics (Untested by me, find a guide somewhere on the forums)
 [/LIST]
 
 [B][SIZE=4]What sorta works[/SIZE][/B]
 [LIST]
 [*]USB 3.1 Type A port works with a mouse. (Unable to mount any drives on that port.)
+[*]Nvidia GPU (Problems with dual monitors).
 [/LIST]
 
 [B][SIZE=4]Untested[/SIZE][/B]
@@ -65,23 +49,76 @@ El Capitan on the GA-Z170X-UD3
 [*]A USB stick or drive, 16 GB or larger
 [/LIST]
 
-[B][SIZE=4]Get El Capitan[/SIZE][/B]
+[B][SIZE=4]Get Sierra[/SIZE][/B]
 [LIST=1]
 [*]Open Mac App Store
 [*]Log in with your Apple ID
 [*]Download OS X El Capitan (10.11.4 or higher required)
-[*]When the download finishes and the setup screen appears, [B]Quit[/B] the app from the menu bar. You should now see the application [B]/Applications/Install OS X El Capitan.app[/B]
+[*]When the download finishes and the setup screen appears, [B]Quit[/B] the app from the menu bar. You should now see the application [B]/Applications/Install macOS Sierra.app[/B]
 [/LIST]
 
 [B][SIZE=4]Things to download[/SIZE][/B]
 [LIST]
-[*][URL=https://github.com/cnrd/GA-Z170X-UD3-OSX/raw/master/zips/Clover%20Files.zip]Clover Files.zip[/URL]
+[*][URL=https://github.com/cnrd/GA-Z170X-UD3-OSX/raw/master/zips/Clover%20Files-10.12.zip]Clover Files.zip[/URL]
 [*][URL=https://github.com/JrCs/CloverGrowerPro/blob/master/Files/HFSPlus/X64/HFSPlus.efi?raw=true]HFSPlus.efi[/URL]
 [*][URL=https://github.com/cnrd/GA-Z170X-UD3-OSX/raw/master/zips/Clover.zip]Clover Installer[/URL]
+[*][URL=https://github.com/toleda/audio_CloverALC/raw/master/audio_cloverALC-120.command.zip]audio_cloverALC-120.command.zip[/URL]
 [*][URL=https://github.com/toleda/audio_CloverHDMI/raw/master/audio_cloverHDMI-110.command.zip]audio_cloverHDMI-110.command[/URL]
-[*][URL=https://github.com/Piker-Alpha/ssdtPRGen.sh/archive/Beta.zip]ssdtPRGen (CPU PWM)[/URL]
+[*][URL=https://github.com/Piker-Alpha/ssdtPRGen.sh/raw/Beta/ssdtPRGen.sh]ssdtPRGen (CPU PWM)[/URL]
 [*][URL=https://github.com/Piker-Alpha/freqVectorsEdit.sh/archive/master.zip]freqVectorsEdit.sh[/URL]
 [*][URL=https://github.com/cnrd/GA-Z170X-UD3-OSX/raw/master/zips/USB-SSDT.zip]USB-SSDT.zip[/URL]
+[*][URL=https://images.nvidia.com/mac/2Fa4AuEpyQiZr7kwcNR8SDb8TorDy7Qz/WebDriver-367.10.10.05b01.pkg]Nvidia beta drivers for Sierra[/URL]
+[/LIST]
+
+[B][SIZE=5]IMPORTANT: Unplug all monitor except your primary now! (Both for new installs and updates)[/SIZE][/B]
+
+[B][SIZE=4]Upgrade path if my El Capitan guide was used[/SIZE][/B]
+[B][SIZE=2]Prerequisites[/SIZE][/B]
+[LIST]
+[*]A working El Capitan installation
+[*]My USB method
+[*]Mac Pro 6,1 or iMac17,1 SMBIOS
+[*]A backup of all important data (I also like to live dangerously)
+[/LIST]
+[B][SIZE=2]Do the following before updating to Sierra[/SIZE][/B]
+[LIST=1]
+[*]Clover (Download clover from above, install then restart).
+[*][B]Remove the following from your Clover EFI folder:[/B]
+    [LIST]
+    [*]/EFI/CLOVER/kexts/Other/AppleALC.kext (Currently causes unbootable system on Sierra)
+    [/LIST]
+[*][B]Replace the following with files from Clover Files-10.12.zip:[/B]
+    [LIST]
+    [*]SSDT-HDEF-HDAS-1.aml (/EFI/CLOVER/ACPI/patched)
+    [*]IntelMausiEthernet.kext (/EFI/CLOVER/kext/Other)
+    [/LIST]
+[*]Set CsrActiveConfig to 0x67 (Disable SIP).
+[/LIST]
+[B][SIZE=2]Update to Sierra[/SIZE][/B]
+[LIST=1]
+[*]Run the Install macOS Sierra.app
+[*]On reboot choose the Install Sierra from Clover screen (add nv_disable=1 flag.
+[*]On reboot add nv_disable=1 flag.
+[*]You should now be in Sierra, yay!
+[*]Install beta nvidia drivers, downloaded above.
+[*]If using iMac17,1: run AGDPFix.app
+[*]Reboot (You should now have working graphics).
+[*]Run audio_cloverALC-120.command for audio.
+[*]If using macPro6,1: Unpack freqVectorsEdit.sh-master.zip, run freqVectorsEdit.sh. Choose the option called: "Mac-65CE76090165799A.plist (iMac17,1)"
+[*]Run the following commands (One at a time):
+    [CODE]
+    sudo rm /System/Library/Caches/com.apple.kext.caches/Startup/kernelcache
+    [/CODE]
+    [CODE]
+    sudo kextcache -system-prelinked-kernel
+    [/CODE]
+    [CODE]
+    sudo kextcache -system-caches
+    [/CODE]
+    [CODE]sudo pmset -a standby 0 && sudo pmset -a autopoweroff 0[/CODE]
+[*]Shutdown your computer.
+[*]Plugin your other monitors (DVI may not work currently)
+[*]Start the system and enjoy Sierra
 [/LIST]
 
 [B][SIZE=4]BIOS Settings[/SIZE][/B]
@@ -116,7 +153,7 @@ El Capitan on the GA-Z170X-UD3
 [/LIST]
 
 [B][SIZE=4]Configure USB ports.[/SIZE][/B]
-[ATTACH=thumb]202750[/ATTACH] [ATTACH=thumb]202751[/ATTACH]
+[ATTACH=thumb]210994[/ATTACH] [ATTACH=thumb]210995[/ATTACH]
 (Credit Scabattoir)
 
 [LIST=1]
@@ -137,7 +174,7 @@ You will need to enable both HS and SS if you want USB 2.0 and USB 3.0 on the sa
 [*]Open [B]/Applications/Utilities/Disk Utility[/B]
 [*]Format drive as [B]Name:[/B] Untitled, [B]Format:[/B] OS X Extended (Journaled), [B]Sheme:[/B] GUID Partition Map
 [*]Open [B]/Applications/Utilities/Terminal[/B] and run this command (Your password will not be shown when typing)
-	[CODE]sudo "/Applications/Install OS X El Capitan.app/Contents/Resources/createinstallmedia" --volume /Volumes/Untitled --applicationpath "/Applications/Install OS X El Capitan.app" --nointeraction[/CODE]
+	[CODE]sudo "/Applications/Install macOS Sierra.app/Contents/Resources/createinstallmedia" --volume /Volumes/Untitled --applicationpath "/Applications/Install macOS Sierra.app" --nointeraction[/CODE]
 [*]Run Clover app from the downloaded ZIP
 [*]Choose [B]Change Install Location...[/B] and choose your USB
 [*]Choose Customize
@@ -162,7 +199,6 @@ You will need to enable both HS and SS if you want USB 2.0 and USB 3.0 on the sa
 	[*]config.plist
 	[*]kexts/Other/FakeSMC.kext
     [*]kexts/Other/IntelMausiEthernet.kext
-    [*]kexts/Other/AppleALC.kext
     [*]kexts/Other/CodecCommander.kext
 	[*]drivers64UEFI/HFSPlus.efi
 	[*]ACPI/patched/XOSI-WIN10.aml
@@ -175,7 +211,7 @@ You will need to enable both HS and SS if you want USB 2.0 and USB 3.0 on the sa
 	[/LIST]
 [/LIST]
 
-[B][SIZE=4]Install El Capitan[/SIZE][/B]
+[B][SIZE=4]Install Sierra[/SIZE][/B]
 [LIST=1]
 [*]Insert USB drive [B]Please use one of the black ports near the PS/2 port on the motherboard I/O[/B]
 [*]Hit [B]F12[/B] and choose [B]UEFI: [I]USB Drive Name[/I][/B]
@@ -219,6 +255,8 @@ If you use another Graphics Card, please search the forum for how to setup.
 [*]From Clover Files copy: ACPI/patched/SSDT-HDMI-NVIDIA-PEG0.aml to the same place in your Clover folder.
 [*]Reboot 
 [/LIST]
+
+[B][SIZE=5]You can now plugin all your monitors (DVI may not work with Nvidia)[/SIZE][/B]
 
 [B][SIZE=4]Credits[/SIZE][/B]
 [LIST]
