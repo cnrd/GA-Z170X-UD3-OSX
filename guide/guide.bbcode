@@ -18,6 +18,9 @@ El Capitan on the GA-Z170X-UD3
 [*]Edited CsrActiveConfig (0x67) [B]DATE:[/B] 07/08/16
 [*]Edited the following SMBIOS entries to contain allowed values: MLB, BoardSerialNumber, SerialNumber, SmUUID. [B]DATE:[/B] 07/08/16
 [*][URL=http://www.tonymacx86.com/threads/guide-el-capitan-on-the-ga-z170x-ud3.180618/page-21#post-1300848]Added FixShutdown_0004 DSDT patch, to avoid auto bootup after sleep.[/URL] (Credit: @edoardoconti97) [B]DATE:[/B] 07/08/16
+[*]Moved the USB section up, and changed some wording, as people were having problems with that section.[B]DATE:[/B] 24/08/16
+[*]Renamed USB-SSDT.py -> USB-SSDT.command (Double click to run) [B]DATE:[/B] 28/08/16
+[*]USB-SSDT.command now saves files on Desktop. [B]DATE:[/B] 28/08/16
 [/LIST]
 
 [B][SIZE=4]My Configuration[/SIZE][/B]
@@ -26,8 +29,10 @@ El Capitan on the GA-Z170X-UD3
 [*]Core i5-6600k @ 4.4GHz
 [*]2x 8 GB DDR4 2666 MHz RAM (16GB)
 [*]Evga GTX 980 Ti SC+
+[*]Samsung EVO 850 500GB
 [*]Western Digital Blue 1TB
-[*]OS X 10.11.4 El Capitan
+[*][URL=http://www.tonymacx86.com/threads/continuity-and-handoff-capable-apple-mini-cards-pcie-and-mini-pcie-adapters.147734/]BCM94360CD Bluetooth/WiFi combo[/URL]
+[*]OS X 10.11.6 El Capitan
 [/LIST]
 
 [B][SIZE=4]What works[/SIZE][/B]
@@ -75,6 +80,7 @@ El Capitan on the GA-Z170X-UD3
 [*][URL=https://github.com/cnrd/GA-Z170X-UD3-OSX/raw/master/zips/Clover.zip]Clover Installer[/URL]
 [*][URL=https://github.com/toleda/audio_CloverHDMI/raw/master/audio_cloverHDMI-110.command.zip]audio_cloverHDMI-110.command[/URL]
 [*][URL=https://github.com/Piker-Alpha/ssdtPRGen.sh/archive/Beta.zip]ssdtPRGen (CPU PWM)[/URL]
+[*][URL=https://github.com/Piker-Alpha/freqVectorsEdit.sh/archive/master.zip]freqVectorsEdit.sh[/URL]
 [*][URL=https://github.com/cnrd/GA-Z170X-UD3-OSX/raw/master/zips/USB-SSDT.zip]USB-SSDT.zip[/URL]
 [/LIST]
 
@@ -109,6 +115,22 @@ El Capitan on the GA-Z170X-UD3
 	[/LIST]
 [/LIST]
 
+[B][SIZE=4]Configure USB ports.[/SIZE][/B]
+[ATTACH=thumb]202750[/ATTACH] [ATTACH=thumb]202751[/ATTACH]
+(Credit Scabattoir)
+
+[LIST=1]
+[*]Unpack USB-SSDT.zip
+[*]Run USB-SSDT.command (Alt click and press [B]Open[/B])
+[*]Use the pictures above to find the ports you need to enable.
+[*]Two files (USB-SSDT.aml and SSDT-5.aml) will be saved on your desktop, save these for later.
+[/LIST]
+
+HSxx (eg. HS01) is USB 2.0
+SSxx (eg. SS01) is USB 3.0
+
+You will need to enable both HS and SS if you want USB 2.0 and USB 3.0 on the same port.
+
 [B][SIZE=4]Prepare Installer[/SIZE][/B]
 [LIST=1]
 [*]Insert USB Drive
@@ -129,9 +151,8 @@ El Capitan on the GA-Z170X-UD3
 		[/LIST]
 	[/LIST]
 [*]Choose install
-[*]Generate USB configuration: [B]Go to section Setup USB[/B] then return.
 [*]When finished open the EFI partiton -> CLOVER folder
-[*][B]Copy files from USB-SSDT folder to these places[/B]
+[*][B]Copy files from Desktop to these places[/B]
 	[LIST]
 	[*]ACPI/patched/SSDT-5.aml
 	[*]ACPI/patched/USB-SSDT.aml
@@ -175,16 +196,17 @@ El Capitan on the GA-Z170X-UD3
 [LIST=1]
 [*]Run Clover installer (Choose the same as before, but also choose Install RC scripts on target volume (To fix missing NVRam))
 [*]Copy the same files as for the installer
-[*][B]If you want a working HWMonitor (Some of the sensors will show wrong data currently) copy (from Sensors):[/B]
-	[LIST]
-	[*]ACPISensors.kext
-	[*]CPUSensors.kext
-	[*]GPUSensors.kext
-	[*]LPCSensors.kext
+
+[*][B]CPU PM:[/B]
+	[LIST=1]
+	[*]Unpack freqVectorsEdit.sh-master.zip, run freqVectorsEdit.sh. Choose the option called: "Mac-65CE76090165799A.plist (iMac17,1)"
+	[*]Reboot
+	[*]Run the ssdtPRGen.sh script that was downloaded earlier (If your CPU is overclocked, add "-turbo xxxx" without the quotes. Ex: "-turbo 4400" for 4.4GHz)
 	[/LIST]
-[*]To get working CPU PWM run the ssdtPRGen.sh script that was downloaded earlier (If your CPU is overclocked, add "-turbo xxxx" without the quotes. Ex: "-turbo 4400" for 4.4GHz)
 [*]To get HDMI audio run audio_cloverHDMI-110.command [B]Do not do this if you use an Nvidia GPU![/B]
-[*]If you want to use iMessage, use [URL=http://www.tonymacx86.com/threads/an-idiots-guide-to-imessage.196827/][B]An iDiot's Guide To iMessage[/B][/URL]. (Not my idea for the name, that is what it's called).
+[*]Run the following command to fix long sleep crashes:
+[CODE]sudo pmset -a standby 0 && sudo pmset -a autopoweroff 0[/CODE]
+[*]If you want to use iMessage, use [URL=http://www.tonymacx86.com/threads/an-idiots-guide-to-imessage.196827/][B]An iDiot's Guide To iMessage[/B][/URL]. (Not my idea for the name, that is what it's called). Generate values for MacPro6,1.
 [*]Make sure that this variable is NOT removed in config.plist: <key>UseARTFrequency</key> <false/>, it should be present under CPU, but Clover Configurator remove the variable.
 [*]Reboot, you should now be able to boot into a working OS X
 [/LIST]
@@ -193,33 +215,18 @@ El Capitan on the GA-Z170X-UD3
 Do all of these steps before rebooting!
 If you use another Graphics Card, please search the forum for how to setup.
 [LIST=1]
-[*]If you use a 9xx series graphics card install the [URL=http://www.nvidia.com/download/driverResults.aspx/100824/en-us]NVIDIA Web Drivers[/URL]
+[*]If you use a 9xx series graphics card install the [URL=http://www.tonymacx86.com/threads/nvidia-releases-alternate-graphics-drivers-for-os-x-10-11-6-346-03-15.198033/]NVIDIA Web Drivers[/URL]
 [*]From Clover Files copy: ACPI/patched/SSDT-HDMI-NVIDIA-PEG0.aml to the same place in your Clover folder.
 [*]Reboot 
 [/LIST]
-
-[B][SIZE=4]Setup USB[/SIZE][/B]
-[ATTACH=thumb]202750[/ATTACH] [ATTACH=thumb]202751[/ATTACH]
-(Credit Scabattoir)
-
-[LIST=1]
-[*]Unpack USB-SSDT.zip
-[*]Run USB-SSDT.py
-[*]Use the pictures above to find the ports you need to enable.
-[/LIST]
-
-HSxx (eg. HS01) is USB 2.0
-SSxx (eg. SS01) is USB 3.0
-
-You will need to enable both HS and SS if you want USB 2.0 and USB 3.0 on the same port.
 
 [B][SIZE=4]Credits[/SIZE][/B]
 [LIST]
 [*][B]toleda:[/B] [URL=http://www.tonymacx86.com/hdmi-audio/143760-audio-hdmi-audio-applehda-guide.html]HDMI/DP fix[/URL]
 [*][B]RehabMan:[/B] [URL=https://github.com/RehabMan/OS-X-USB-Inject-All]USB fix[/URL] & [URL=https://github.com/RehabMan/EAPD-Codec-Commander]CodecCommander.kext[/URL]
 [*][B]Scabattoir:[/B] [URL=http://www.tonymacx86.com/desktop-compatibility/176407-testing-thread-skylake-platform-os-x-28.html#post1159924]USB layout[/URL]
-[*][B]ammulder:[/B] Guide layout and answering questions
-[*][B]Pike R. Alpha:[/B] [URL=https://pikeralpha.wordpress.com/2015/11/06/appleapic-kext-binary-patch-for-skylake/]Skylake patch[/URL] & [URL=https://github.com/Piker-Alpha/ssdtPRGen.sh]ssdtPRGen.sh[/URL] & [URL=https://pikeralpha.wordpress.com/2016/07/13/simple-skylake-usb-fix-no-kexts-required/]USB SSDT idea.[/URL]
+[*][B]ammulder:[/B] Sleep fix & guide layout & answering questions
+[*][B]Pike R. Alpha:[/B] [URL=https://pikeralpha.wordpress.com/2015/11/06/appleapic-kext-binary-patch-for-skylake/]Skylake patch[/URL] & [URL=https://github.com/Piker-Alpha/ssdtPRGen.sh]ssdtPRGen.sh[/URL] & [URL=https://github.com/Piker-Alpha/freqVectorsEdit.sh]freqVectorsEdit.sh[/URL] & [URL=https://pikeralpha.wordpress.com/2016/07/13/simple-skylake-usb-fix-no-kexts-required/]USB SSDT idea.[/URL]
 [*][B]tonymacx86:[/B] [URL=http://www.tonymacx86.com/network/180995-intel-i219-ethernet-drivers-skylake-100-series-motherboards-testing.html]Intel i219-V kext (ethernet fix)[/URL] & [URL=http://www.tonymacx86.com/graphics/188891-skylake-intel-hd-530-integrated-graphics-working-10-11-4-a.html]Intel 530 Graphics[/URL]
 [*][B]slim.jim:[/B] [URL=http://www.tonymacx86.com/graphics/161256-solving-nvidia-driver-install-loading-problems.html]GPU Black screen Fix[/URL]
 [*][B]vit9696:[/B] [URL=https://github.com/vit9696/AppleALC]AppleALC.kext[/URL]
