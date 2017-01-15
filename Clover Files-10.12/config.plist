@@ -10,25 +10,50 @@
 			<false/>
 			<key>DropOEM_DSM</key>
 			<false/>
-			<key>ReuseFFFF</key>
-			<false/>
-			<key>Patches</key>
-			<array>
-				<dict>
-				<key>Comment</key>
-				<string>change _OSI to XOSI</string>
-				<key>Find</key>
-				<data>X09TSQ==</data>
-				<key>Replace</key>
-				<data>WE9TSQ==</data>
-				</dict>
-			</array>
 			<key>Fixes</key>
 			<dict>
 				<key>FixShutdown_0004</key>
 				<true/>
 			</dict>
+			<key>Patches</key>
+			<array>
+				<dict>
+					<key>Comment</key>
+					<string>change _OSI to XOSI</string>
+					<key>Disabled</key>
+					<false/>
+					<key>Find</key>
+					<data>
+					X09TSQ==
+					</data>
+					<key>Replace</key>
+					<data>
+					WE9TSQ==
+					</data>
+				</dict>
+				<dict>
+					<key>Comment</key>
+					<string>Rename HDAS to HDEF</string>
+					<key>Disabled</key>
+					<false/>
+					<key>Find</key>
+					<data>SERBUw==</data>
+					<key>Replace</key>
+					<data>SERFRg==</data>
+				</dict>
+			</array>
+			<key>ReuseFFFF</key>
+			<false/>
 		</dict>
+		<key>DropTables</key>
+		<array>
+			<dict>
+				<key>Signature</key>
+				<string>SSDT</string>
+				<key>TableId</key>
+				<string>xh_rvp10</string>
+			</dict>
+		</array>
 		<key>SSDT</key>
 		<dict>
 			<key>DropOem</key>
@@ -36,15 +61,6 @@
 			<key>Generate</key>
 			<false/>
 		</dict>
-		<key>DropTables</key>
-		<array>
-			<dict>
-    			<key>Signature</key>
-    			<string>SSDT</string>
-    			<key>TableId</key>
-    			<string>xh_rvp10</string>
-  			</dict>
-  		</array>
 	</dict>
 	<key>Boot</key>
 	<dict>
@@ -57,9 +73,9 @@
 		<key>Secure</key>
 		<false/>
 		<key>Timeout</key>
-		<integer>5</integer>
+		<integer>30</integer>
 		<key>XMPDetection</key>
-		<string>Yes</string>
+		<true/>
 	</dict>
 	<key>CPU</key>
 	<dict>
@@ -67,6 +83,10 @@
 		<integer>100</integer>
 		<key>UseARTFrequency</key>
 		<false/>
+		<key>HWPEnable</key>
+		<true/>
+		<key>HWPValue</key>
+		<string>0xa4002c08</string>
 	</dict>
 	<key>Devices</key>
 	<dict>
@@ -82,7 +102,7 @@
 			<key>IMEI</key>
 			<string>0x0</string>
 			<key>IntelGFX</key>
-			<string>0x0</string>
+			<string>0x191b8086</string>
 			<key>LAN</key>
 			<string>0x0</string>
 			<key>NVidia</key>
@@ -128,6 +148,10 @@
 			<key>Tool</key>
 			<true/>
 		</dict>
+		<key>ScreenResolution</key>
+		<string>2560x1440</string>
+		<key>Theme</key>
+		<string>Minimalism</string>
 	</dict>
 	<key>Graphics</key>
 	<dict>
@@ -161,22 +185,6 @@
 		<true/>
 		<key>KextsToPatch</key>
 		<array>
-			<dict>
-				<key>Comment</key>
-				<string>TRIM Enabler</string>
-				<key>Disabled</key>
-				<false/>
-				<key>Find</key>
-				<data>
-				AEFQUExFIFNTRAA=
-				</data>
-				<key>Name</key>
-				<string>IOAHCIBlockStorage</string>
-				<key>Replace</key>
-				<data>
-				AAAAAAAAAAAAAAA=
-				</data>
-			</dict>
 		</array>
 	</dict>
 	<key>RtVariables</key>
@@ -193,37 +201,37 @@
 	<key>SMBIOS</key>
 	<dict>
 		<key>BiosReleaseDate</key>
-		<string>06/12/13</string>
+		<string>04/11/2016</string>
 		<key>BiosVendor</key>
 		<string>Apple Inc.</string>
 		<key>BiosVersion</key>
-		<string>MP61.88Z.0116.B04.1312061508</string>
+		<string>IM171.88Z.0105.B08.1604111319</string>
 		<key>Board-ID</key>
-		<string>Mac-F60DEB81FF30ACF6</string>
+		<string>Mac-B809C3757DA9BB8D</string>
 		<key>BoardManufacturer</key>
 		<string>Apple Inc.</string>
 		<key>BoardSerialNumber</key>
 		<string>MLBFIXME12345</string>
 		<key>BoardType</key>
-		<integer>11</integer>
+		<integer>10</integer>
 		<key>ChassisAssetTag</key>
-		<string>Pro-Enclosure</string>
+		<string>iMac-Aluminum</string>
 		<key>ChassisManufacturer</key>
 		<string>Apple Inc.</string>
 		<key>ChassisType</key>
-		<string>06</string>
+		<string>13</string>
 		<key>Family</key>
-		<string>Mac Pro</string>
+		<string>iMac</string>
 		<key>Manufacturer</key>
 		<string>Apple Inc.</string>
 		<key>ProductName</key>
-		<string>MacPro6,1</string>
+		<string>iMac17,1</string>
 		<key>SerialNumber</key>
 		<string>C02LFIXME1234</string>
 		<key>SmUUID</key>
 		<string>10000000-2000-3000-4000-500000000000</string>
 		<key>Trust</key>
-		<true/>
+		<false/>
 		<key>Version</key>
 		<string>1.0</string>
 	</dict>
